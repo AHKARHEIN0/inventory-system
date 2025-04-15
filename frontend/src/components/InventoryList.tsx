@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { InventoryItem } from "../types";
 import { api } from "../api";
+import AddItemForm from "./AddItemForm";
+
 
 const InventoryList = () => {
   const [items, setItems] = useState<InventoryItem[]>([]);
@@ -13,7 +15,16 @@ const InventoryList = () => {
 
   return (
     <div className="p-4">
-      <h2 className="text-xl font-bold mb-4">Inventory List</h2>
+      <h2 className="text-2xl font-bold mb-4">Inventory Management</h2>
+  
+      {/* Add Item Form */}
+      <AddItemForm onItemAdded={() => {
+        api.get("/inventory/")
+          .then(res => setItems(res.data))
+          .catch(err => console.error("Error fetching inventory", err));
+      }} />
+  
+      {/* Inventory Table */}
       <table className="w-full border">
         <thead>
           <tr className="bg-gray-200 text-left">
@@ -37,7 +48,7 @@ const InventoryList = () => {
         </tbody>
       </table>
     </div>
-  );
+  );  
 };
 
 export default InventoryList;
