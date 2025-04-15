@@ -1,14 +1,11 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import InventoryList from "./components/InventoryList";
 
 function App() {
   return (
-    <div className="text-3xl font-bold text-blue-600">
-      Tailwind is working!
+    <div className="container mx-auto mt-8">
+      <InventoryList />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
