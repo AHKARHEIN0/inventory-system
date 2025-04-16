@@ -47,7 +47,10 @@ jobs:
 
     - name: Run backend tests (optional)
       working-directory: ./backend
-      run: echo "No backend tests yet!"
+      run: |
+        pip install pytest
+        pytest
+
 
     - name: Install Node dependencies
       working-directory: ./frontend
