@@ -17,6 +17,11 @@ jobs:
           POSTGRES_USER: testuser
           POSTGRES_PASSWORD: testpass
           POSTGRES_DB: testdb
+          user: ${{ secrets.user }}
+          password: ${{ secrets.password }}
+          host: ${{ secrets.host }}
+          port: ${{ secrets.port }}
+          dbname: ${{ secrets.dbname }}
         ports:
           - 5432:5432
         options: >-
