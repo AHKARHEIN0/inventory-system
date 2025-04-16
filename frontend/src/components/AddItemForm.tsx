@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { InventoryItem } from "../types";
 import { api } from "../api";
+import { useEffect } from "react";
 
 const initialForm: InventoryItem = {
   name: "",
@@ -10,8 +11,22 @@ const initialForm: InventoryItem = {
   notes: ""
 };
 
-const AddItemForm = ({ onItemAdded }: { onItemAdded: () => void }) => {
+const AddItemForm = ({
+  onItemAdded,
+  editItem
+}: {
+  onItemAdded: () => void;
+  editItem?: InventoryItem | null;
+}) => {
   const [formData, setFormData] = useState<InventoryItem>(initialForm);
+  
+  useEffect(() => {
+    if (editItem) {
+      setFormData(editItem);
+    } else {
+      setFormData(initialForm);
+    }
+  }, [editItem]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -24,12 +39,17 @@ const AddItemForm = ({ onItemAdded }: { onItemAdded: () => void }) => {
     console.log("Submitting:", formData);  // ✅ DEBUG LOG
   
     try {
-      await api.post("/inventory/", formData);  // ✅ sends POST to backend
-      setFormData(initialForm);                 // reset the form
-      onItemAdded();                            // notify parent to refresh list
+      if (editItem?.id) {
+        await api.put(`/inventory/${editItem.id}`, formData);
+      } else {
+        await api.post("/inventory/", formData);
+      }
+      setFormData(initialForm);
+      onItemAdded();
     } catch (err) {
-      console.error("POST failed", err);        // ✅ ERROR LOG
+      console.error("Submit failed", err);
     }
+    
   };
 
   return (
