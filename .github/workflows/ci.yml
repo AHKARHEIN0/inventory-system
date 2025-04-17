@@ -49,20 +49,19 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-    
 
     - name: Run backend tests
       working-directory: ./backend
       run: |
         pip install pytest
         pytest
-      
-
 
     - name: Install Node dependencies
       working-directory: ./frontend
       run: npm install
 
-    - name: Build React app
+    - name: Build React app with env
       working-directory: ./frontend
+      env:
+        VITE_API_BASE_URL: ${{ secrets.VITE_API_BASE_URL }}
       run: npm run build
