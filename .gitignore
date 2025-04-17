@@ -12,7 +12,8 @@ node_modules/
 dist/
 build/
 .env.local
-.env.production
+# Don't ignore production env file
+# .env.production
 
 # System
 .DS_Store
