@@ -1,23 +1,15 @@
 # Python
-__pycache__/
-*.py[cod]
-*.sqlite3
-*.db
-*.log
+backend/venv/
+*.pyc
 .env
-venv/
 
-# Node.js
-node_modules/
-dist/
-build/
+# Node
+frontend/node_modules/
 .env.local
-# Don't ignore production env file
-# .env.production
 
-# System
+# Expo
+mobile-inventory-app/node_modules/
+
+# Common
 .DS_Store
-Thumbs.db
-
-# VS Code
 .vscode/
