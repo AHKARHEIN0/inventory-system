@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "mobile-inventory-app",
+    "name": "Inventory Manager",
     "slug": "mobile-inventory-app",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -9,9 +9,11 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.ahkar.inventory"
     },
     "android": {
+      "package": "com.ahkar.inventory",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
@@ -32,10 +34,19 @@
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
-      ]
+      ],
+      "expo-web-browser"
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "fd2ea075-ea16-43b5-9d4b-3c54bbf9fe61"
+      }
     }
   }
 }

@@ -1,19 +1,19 @@
-# Python
+# ────────── Python ──────────
 backend/venv/
-*.pyc
+*.py[cod]
 __pycache__/
-.env
 *.db
 *.sqlite3
 *.log
+.env
 
-# Node.js
+# ────────── Node.js (React frontend) ──────────
 frontend/node_modules/
 frontend/dist/
 frontend/.env.local
 frontend/.env.production
 
-# Expo (React Native)
+# ────────── Expo / React Native (Mobile app) ──────────
 mobile-inventory-app/node_modules/
 mobile-inventory-app/.expo/
 mobile-inventory-app/.expo-shared/
@@ -23,11 +23,9 @@ mobile-inventory-app/ios/
 mobile-inventory-app/android/
 mobile-inventory-app/.env
 
-# Common
+# ────────── System / IDE ──────────
 .DS_Store
-.vscode/
-*.log
-
-# OS generated
 Thumbs.db
 ehthumbs.db
+.vscode/
+*.log
