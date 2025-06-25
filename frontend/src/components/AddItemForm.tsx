@@ -30,7 +30,15 @@ const AddItemForm = ({
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: name === "quantity" ? parseInt(value) : value }));
+    setFormData(prev => ({
+      ...prev,
+      [name]:
+        name === "quantity"
+          ? value === "" || isNaN(parseInt(value))
+            ? 0
+            : parseInt(value)
+          : value,
+    }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
